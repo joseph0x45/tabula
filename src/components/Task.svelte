@@ -1,12 +1,33 @@
 <script lang="ts" >
     import Todo from "../components/Todo.svelte"
+
+    export let top = 30
+    export let left = 30
+    let moving = false
+
+    function start(){
+        moving = true
+    }
+
+    function stop(){
+        moving = false
+    }
+
+    function drag(e: MouseEvent){
+        if(moving){
+            top += e.movementY
+            left += e.movementX
+        }
+    }
+
+
     export let parent_color: {
         primary:string,
         secondary: string
     }
     const todos = [
         {
-            name:"task1xddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            name:"task1",
             done:false
         },
         {
@@ -20,8 +41,13 @@
     ]
 </script>
 
-<main style={`background-color:${parent_color.primary};`} class={` text-white w-52 h-min rounded-xl shadow-2xl p-2 absolute `} >
-    <section class={` h-[15%] focus: w-full flex items-center justify-between mb-1 hover:cursor-grab`} >
+<svelte:window on:mouseup={stop} on:mousemove={drag} />
+
+<main style={`background-color:${parent_color.primary}; left: ${left}px; top: ${top}px; `} class={` text-white w-52 h-min rounded-xl shadow-2xl p-2 absolute `} >
+    <section 
+        class={` h-[15%] focus: w-full flex items-center justify-between mb-1 ${moving?"hover:cursor-grabbing":"hover:cursor-grab"}  `} 
+        on:mousedown={start}
+    >
         <h1 title="Name is too long so it shows in here" >Name</h1>
         <div class=" flex gap-2" >
             <button>

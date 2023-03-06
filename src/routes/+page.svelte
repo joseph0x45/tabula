@@ -7,6 +7,11 @@
             id:1,
             name:"Test",
             color:colors[4]
+        },
+        {
+            id:1,
+            name:"Test",
+            color:colors[1]
         }
     ]
 </script>
