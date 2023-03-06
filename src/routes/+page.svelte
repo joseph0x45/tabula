@@ -1,6 +1,6 @@
 <script lang="ts" >
     import Task from "../components/Task.svelte"
-    import { colors } from "../lib/colors";
+    import { colors } from "../lib/";
     const tasks = [
         {
             id:1,
