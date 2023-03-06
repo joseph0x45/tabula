@@ -1,5 +1,6 @@
 <script lang="ts" >
     import Task from "../components/Task.svelte"
+    import ToolTip from "../components/modals/ToolTip.svelte";
     import { colors } from "../lib/";
     const tasks = [
         {
@@ -11,6 +12,7 @@
 </script>
 
 <main class=" relative h-screen w-full " >
+    <ToolTip/>
     {#each tasks as task}
         <Task parent_color={task.color} />
     {/each}
