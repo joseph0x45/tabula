@@ -11,7 +11,7 @@
     ]
 </script>
 
-<main class=" relative h-screen w-full " >
+<main class=" p-1 relative h-screen w-full " >
     <ToolTip/>
     {#each tasks as task}
         <Task parent_color={task.color} />
