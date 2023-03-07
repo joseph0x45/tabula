@@ -8,8 +8,8 @@ export const colors: Color[] = [
     },
     {
         name:"Yilly Yellow",
-        primary:"#fff510",
-        secondary:"	#f5fb94"
+        primary:"#f5fb94",
+        secondary:"#ffd700"
     },
     {
         name:"Pinky ",

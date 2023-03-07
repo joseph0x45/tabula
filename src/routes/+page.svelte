@@ -14,7 +14,6 @@
             loading = false
         }
     })
-    
 </script>
 
 <main class=" p-1 relative h-screen w-full " >
