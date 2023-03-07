@@ -42,3 +42,7 @@ function init_tabula(){
 export function load_tabula(){
     return JSON.parse(localStorage.getItem("tabula_data") ?? init_tabula()) as Board
 }
+
+export function create_task(){
+
+}

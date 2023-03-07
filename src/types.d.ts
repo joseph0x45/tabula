@@ -9,6 +9,8 @@ export type Task = {
     name:string
     color:Color
     todos: Todo[]
+    posx: number
+    posy: number
     z_index?:number
 }
 

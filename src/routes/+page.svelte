@@ -19,7 +19,19 @@
     function toggle_show_modal(){
         add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
     }
+
+    function handle_click( e: KeyboardEvent ){
+        switch (e.key) {
+            case "t":
+                toggle_show_modal()
+                break;
+            default:
+                break;
+        }
+    }
 </script>
+
+<svelte:window on:keypress={handle_click} />
 
 <main class=" p-1 relative h-screen w-full dark:text-slate-300 " >
     <ToolTip/>
