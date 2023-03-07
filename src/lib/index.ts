@@ -1,4 +1,6 @@
-export const colors: { name:string, primary:string, secondary:string }[] = [
+import type { Board, Task, Color, Todo } from "../types"
+
+export const colors: Color[] = [
     {
         name:"Red Royale",
         primary:"#ff7b7b",
@@ -25,3 +27,17 @@ export const colors: { name:string, primary:string, secondary:string }[] = [
         secondary:"#0892d0"
     }
 ]
+
+function init_tabula(){
+    const new_board: Board = {
+        id:1,
+        name:"Prima",
+        tasks:[]
+    }
+    localStorage.setItem("tabula_data", JSON.stringify(new_board))
+    return localStorage.getItem("tabula_data") as string
+}
+
+export function load_tabula(){
+    return JSON.parse(localStorage.getItem("tabula_data") ?? init_tabula()) as Board
+}

@@ -1,8 +1,10 @@
-<script lang="ts" >
+<script lang="ts"  >
+	import { browser } from "$app/environment";
+	import { onMount } from "svelte";
     import Todo from "../components/Todo.svelte"
 
-    export let top = 30
-    export let left = 30
+    export let top = 100
+    export let left = 100
     let moving = false
 
     function start(){

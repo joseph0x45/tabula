@@ -6,3 +6,6 @@
     display: none;
 }
 
+body{
+    @apply bg-white;
+}
