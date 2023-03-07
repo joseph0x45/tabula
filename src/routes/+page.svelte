@@ -1,7 +1,7 @@
 <script lang="ts" >
     import Task from "../components/Task.svelte"
     import ToolTip from "../components/modals/ToolTip.svelte";
-    import { colors, load_tabula } from "../lib/";
+    import { load_tabula } from "../lib/";
 	import { onMount } from "svelte";
 	import type { Board } from "../types";
 	import { browser } from "$app/environment";
