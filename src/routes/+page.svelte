@@ -2,6 +2,8 @@
     import Task from "../components/Task.svelte"
     import ToolTip from "../components/modals/ToolTip.svelte";
     import Socials from "../components/modals/Socials.svelte";
+    import AddTask from "../components/modals/AddTask.svelte";
+    import { add_task_modal_is_visible } from "../store";
     import { load_tabula } from "../lib/";
 	import { onMount } from "svelte";
 	import type { Board } from "../types";
@@ -14,14 +16,18 @@
             loading = false
         }
     })
+    function toggle_show_modal(){
+        add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
+    }
 </script>
 
 <main class=" p-1 relative h-screen w-full dark:text-slate-300 " >
     <ToolTip/>
     <Socials/>
+    <AddTask/>
     {#if !loading && loaded_data}
 
-        {#if loaded_data.tasks.length===0}
+        {#if loaded_data.tasks.length===0 && !$add_task_modal_is_visible}
 
             <div class=" text-gray-500 dark:text-gray-300 h-full w-fit  m-auto flex flex-col items-center justify-center gap-1 "  >
                 <div class=" flex items-center justify-center w-full" >
@@ -32,6 +38,7 @@
                 <div class=" flex flex-col w-[70%] gap-2 text-sm font-thin mt-5" >
                     <button 
                         class="welcome_screen_button" 
+                        on:click={toggle_show_modal}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />

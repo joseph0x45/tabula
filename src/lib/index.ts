@@ -1,4 +1,5 @@
 import type { Board, Task, Color, Todo } from "../types"
+import { add_task_modal_is_visible } from "../store"
 
 export const colors: Color[] = [
     {
