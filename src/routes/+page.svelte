@@ -4,7 +4,7 @@
     import Socials from "../components/modals/Socials.svelte";
     import AddTask from "../components/modals/AddTask.svelte";
     import { add_task_modal_is_visible } from "../store";
-    import { load_tabula } from "../lib/";
+    import { colors, load_tabula } from "../lib/";
 	import { onMount } from "svelte";
 	import type { Board } from "../types";
 	import { browser } from "$app/environment";
@@ -29,9 +29,35 @@
                 break;
         }
     }
+    const tasks = [
+        {
+            name:"Breh",
+            color: colors[0]
+        },
+        {
+            name:"Breh",
+            color: colors[1]
+        },
+        {
+            name:"Breh",
+            color: colors[2]
+        },
+        {
+            name:"Breh",
+            color: colors[3]
+        },
+        {
+            name:"Breh",
+            color: colors[4]
+        }
+    ]
 </script>
 
 <svelte:window on:keypress={handle_click} />
+
+<svelte:head>
+    <title>Tabula | Prima</title>
+</svelte:head >
 
 <main class=" p-1 relative h-screen w-full dark:text-slate-300 " >
     <ToolTip/>
@@ -39,7 +65,7 @@
     <AddTask/>
     {#if !loading && loaded_data}
 
-        {#if loaded_data.tasks.length===0 && !$add_task_modal_is_visible}
+        {#if tasks.length===0 && !$add_task_modal_is_visible}
 
             <div class=" text-gray-500 dark:text-gray-300 h-full w-fit  m-auto flex flex-col items-center justify-center gap-1 "  >
                 <div class=" flex items-center justify-center w-full" >
@@ -81,7 +107,7 @@
         
         {:else}
 
-            {#each loaded_data.tasks as task}
+            {#each tasks as task}
                 <Task parent_color={task.color} />
             {/each}
         

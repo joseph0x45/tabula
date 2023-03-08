@@ -1,6 +1,4 @@
 <script lang="ts"  >
-	import { browser } from "$app/environment";
-	import { onMount } from "svelte";
     import Todo from "../components/Todo.svelte"
 
     export let top = 100
@@ -45,7 +43,7 @@
 
 <svelte:window on:mouseup={stop} on:mousemove={drag} />
 
-<main style={`background-color:${parent_color.primary}; left: ${left}px; top: ${top}px; `} class={` text-white w-52 h-min rounded-xl shadow-2xl p-2 absolute `} >
+<main style={`background-color:${parent_color.primary}; left: ${left}px; top: ${top}px; `} class={` select-none text-white w-52 h-min rounded-xl shadow-2xl p-2 absolute `} >
     <section 
         class={` h-[15%] focus: w-full flex items-center justify-between mb-1 ${moving?"hover:cursor-grabbing":"hover:cursor-grab"}  `} 
         on:mousedown={start}
