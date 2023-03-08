@@ -20,7 +20,6 @@
         }
     }
 
-
     export let parent_color: {
         primary:string,
         secondary: string
