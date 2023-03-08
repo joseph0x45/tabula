@@ -4,18 +4,20 @@
     import Socials from "../components/modals/Socials.svelte";
     import AddTask from "../components/modals/AddTask.svelte";
     import { add_task_modal_is_visible } from "../store";
-    import { load_tabula } from "../lib/";
-	import { onMount } from "svelte";
+    import { init_tabula } from "../lib/";
+    import type  { Writable } from "svelte/store";
 	import type { Board } from "../types";
+	import { onMount } from "svelte";
 	import { browser } from "$app/environment";
-    let loaded_data : Board
     let loading = true
+    let loaded_data: Writable<Board>
     onMount(()=>{
         if(browser){
-            loaded_data = load_tabula()
+            loaded_data = init_tabula()
             loading = false
         }
     })
+
     function toggle_show_modal(){
         add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
     }
@@ -43,7 +45,7 @@
     <AddTask/>
     {#if !loading && loaded_data}
 
-        {#if loaded_data.tasks.length===0 && !$add_task_modal_is_visible}
+        {#if $loaded_data.tasks.length===0 && !$add_task_modal_is_visible}
 
             <div class=" text-gray-500 dark:text-gray-300 h-full w-fit  m-auto flex flex-col items-center justify-center gap-1 "  >
                 <div class=" flex items-center justify-center w-full" >
@@ -85,7 +87,7 @@
         
         {:else}
 
-            {#each loaded_data.tasks as task}
+            {#each $loaded_data.tasks as task}
                 <Task parent_color={task.color} />
             {/each}
         

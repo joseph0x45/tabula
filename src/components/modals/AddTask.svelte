@@ -12,7 +12,7 @@
 {#if $add_task_modal_is_visible}
     <main  class=" w-72  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  flex flex-col items-center justify-center" >
         <div class="  w-full rounded-md p-2 flex flex-col bg-gray-400" >
-            <div class=" flex justify-between" >
+            <div class=" select-none text-white flex justify-between" >
                 <h1>New Task</h1>
                 <button on:click={toggle_show_modal} >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
