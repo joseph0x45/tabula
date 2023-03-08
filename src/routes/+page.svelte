@@ -4,7 +4,7 @@
     import Socials from "../components/modals/Socials.svelte";
     import AddTask from "../components/modals/AddTask.svelte";
     import { add_task_modal_is_visible } from "../store";
-    import { init_tabula } from "../lib/";
+    import { init_tabula, create_task } from "$lib";
     import type  { Writable } from "svelte/store";
 	import type { Board } from "../types";
 	import { onMount } from "svelte";
@@ -19,21 +19,28 @@
     })
 
     function toggle_show_modal(){
-        add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
+        add_task_modal_is_visible.set(true) 
     }
 
-    function handle_click( e: KeyboardEvent ){
+    function handle_keypress( e: KeyboardEvent ){        
         switch (e.key) {
             case "t":
+                if($add_task_modal_is_visible){
+                    return
+                }
                 toggle_show_modal()
                 break;
+            case "Escape":
+                if($add_task_modal_is_visible){
+                    add_task_modal_is_visible.set(false)
+                }
             default:
                 break;
         }
     }
 </script>
 
-<svelte:window on:keypress={handle_click} />
+<svelte:window on:keydown={handle_keypress} />
 
 <svelte:head>
     <title>Tabula | Prima</title>
