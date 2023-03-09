@@ -1,22 +1,11 @@
 <script lang="ts" >
+    export const csr = true
     import Task from "../components/Task.svelte"
     import ToolTip from "../components/modals/ToolTip.svelte";
     import Socials from "../components/modals/Socials.svelte";
     import AddTask from "../components/modals/AddTask.svelte";
     import { add_task_modal_is_visible } from "../store";
-    import { init_tabula, create_task } from "$lib";
-    import type  { Writable } from "svelte/store";
-	import type { Board } from "../types";
-	import { onMount } from "svelte";
-	import { browser } from "$app/environment";
-    let loading = true
-    let loaded_data: Writable<Board>
-    onMount(()=>{
-        if(browser){
-            loaded_data = init_tabula()
-            loading = false
-        }
-    })
+	import board, { add_task } from "../store/board";
 
     function toggle_show_modal(){
         add_task_modal_is_visible.set(true) 
@@ -29,6 +18,7 @@
                     return
                 }
                 toggle_show_modal()
+                add_task()
                 break;
             case "Escape":
                 if($add_task_modal_is_visible){
@@ -38,9 +28,11 @@
                 break;
         }
     }
+
+
 </script>
 
-<svelte:window on:keydown={handle_keypress} />
+<svelte:window on:keydown={handle_keypress}  />
 
 <svelte:head>
     <title>Tabula | Prima</title>
@@ -50,9 +42,9 @@
     <ToolTip/>
     <Socials/>
     <AddTask/>
-    {#if !loading && loaded_data}
+    {#if  board}
 
-        {#if $loaded_data.tasks.length===0 && !$add_task_modal_is_visible}
+        {#if $board.tasks.length===0 && !$add_task_modal_is_visible}
 
             <div class=" text-gray-500 dark:text-gray-300 h-full w-fit  m-auto flex flex-col items-center justify-center gap-1 "  >
                 <div class=" flex items-center justify-center w-full" >
@@ -94,8 +86,8 @@
         
         {:else}
 
-            {#each $loaded_data.tasks as task}
-                <Task parent_color={task.color} />
+            {#each $board.tasks as task}
+                <Task {task} />
             {/each}
         
         {/if}

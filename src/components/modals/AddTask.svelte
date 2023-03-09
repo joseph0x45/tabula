@@ -1,10 +1,10 @@
 <script lang="ts`" >
     import { add_task_modal_is_visible } from "../../store";
+    // import { colors } from "$lib"
     function toggle_show_modal(){
         add_task_modal_is_visible.set(false) 
     }
-
-    function add_task(){
+    function add_todo(){
         alert("bozo")
     }
 </script>
@@ -20,8 +20,8 @@
                     </svg>  
                 </button>
             </div>
-            <form class=" flex flex-col p-1 gap-3" on:submit={add_task} >
-                <input class=" dark:text-white  dark:caret-white rounded-md p-2 focus:outline-none w-full text-gray-800 dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Task title"  >
+            <form class=" flex flex-col p-1 gap-3" on:submit={add_todo} >
+                <input class=" w-full dark:text-white  dark:caret-white rounded-md p-2 focus:outline-none text-gray-800 dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Task title"  >
                 <div class=" flex justify-between items-center w-full " >
                     <input class=" w-[80%] focus:outline-none rounded-md p-2 text-gray-800 dark:text-white dark:caret-white dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Add Todo">
                     <button type="submit" class=" text-white bg-gray-400 dark:bg-white dark:text-black hover:dark:bg-transparent hover:dark:text-white dark:border dark:border-white p-2 rounded-md" >

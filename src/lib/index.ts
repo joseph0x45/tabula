@@ -1,6 +1,4 @@
-import type { Board, Task, Color, Todo } from "../types"
-import { add_task_modal_is_visible } from "../store"
-import { writable } from "svelte/store"
+import type { Color } from "../types"
 
 export const colors: Color[] = [
     {
@@ -29,30 +27,3 @@ export const colors: Color[] = [
         secondary:"#0892d0"
     }
 ]
-
-export function init_tabula(){
-    const new_board: Board = {
-        id:1,
-        name:"Prima",
-        tasks:[]
-    }
-    const board = writable<Board>(new_board)
-    const tabula_data = (() =>{
-        if( localStorage.getItem("tabula_data")!==null ){
-            return JSON.parse(localStorage.getItem("tabula_data") as string) as Board
-        }else{
-            localStorage.setItem("tabula_data", JSON.stringify(new_board))
-            return JSON.parse(localStorage.getItem("tabula_data") as string) as Board
-        }
-    })()
-    board.set(tabula_data)
-    board.subscribe((value)=>{
-        localStorage.setItem("tabula_data", JSON.stringify(value))
-    })    
-    return board
-}
-
-
-export function create_task(){
-    alert("Creating")
-}
