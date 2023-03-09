@@ -4,7 +4,7 @@
     import ToolTip from "../components/modals/ToolTip.svelte";
     import Socials from "../components/modals/Socials.svelte";
     import { add_task_modal_is_visible, idling } from "../store";
-	import board, { add_task, clear, just_created_task_id, update_task_name } from "../store/board";
+	import board, { add_task, clear, update_task_name, add_todo } from "../store/board";
 
     function toggle_show_modal(){
         add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
@@ -40,6 +40,7 @@
         }
     }
 
+    let todo_name: string 
 
 </script>
 
@@ -64,17 +65,17 @@
                         </svg>  
                     </button>
                 </div>
-                <form class=" flex flex-col p-1 gap-3"  >
+                <form class=" flex flex-col p-1 gap-3" on:submit|preventDefault={()=>{ add_todo(latest_task.id, todo_name) }} >
                     <input bind:value={latest_task.name} on:change={()=>{ update_task_name(latest_task.id, latest_task.name) }} class=" w-full dark:text-white  dark:caret-white rounded-md p-2 focus:outline-none text-gray-800 dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Task title"  >
                     <div class=" flex justify-between items-center w-full " >
-                        <input  class=" w-[80%] focus:outline-none rounded-md p-2 text-gray-800 dark:text-white dark:caret-white dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Add Todo">
+                        <input bind:value={todo_name} required class=" w-[80%] focus:outline-none rounded-md p-2 text-gray-800 dark:text-white dark:caret-white dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Add Todo">
                         <button type="submit" class=" text-white bg-gray-400 dark:bg-white dark:text-black hover:dark:bg-transparent hover:dark:text-white dark:border dark:border-white p-2 rounded-md" >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>                      
                         </button>
                     </div>
-                    <button type="button" class=" text-center rounded-md w-full bg-gray-400 text-white dark:bg-white dark:text-black hover:dark:bg-transparent hover:dark:text-white dark:border dark:border-white p-2" >
+                    <button on:click={toggle_show_modal} type="button" class=" text-center rounded-md w-full bg-gray-400 text-white dark:bg-white dark:text-black hover:dark:bg-transparent hover:dark:text-white dark:border dark:border-white p-2" >
                         Done
                     </button>
                 </form>

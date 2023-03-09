@@ -35,10 +35,7 @@ export function add_task(){
         const new_task: Task = {
             id : value.tasks.length+1,
             name:"",
-            todos:[{
-                name:"Test",
-                done:true
-            }] as Todo[],
+            todos:[] as Todo[],
             posx:100,
             posy:100,
             color:colors[5]
@@ -52,15 +49,29 @@ export function add_task(){
 export function update_task_position( id:number, posx:number, posy:number ){
     board.update(
         value=>{
-            value.tasks = value.tasks.map(task=> task.id===id? { ...task, posx, posy } : { ...task } )
+            // value.tasks = value.tasks.map(task=> task.id===id? { ...task, posx, posy } : { ...task } )
+            value.tasks[id-1] = { ...value.tasks[id-1], posx, posy }
             return value
         }
     )
 }
 
 export function update_task_name( id:number, name:string ){
+    console.log(id)
     board.update(value=>{
-        value.tasks.map(task=> task.id===id? { ...task, name:name } : { ...task } )
+        // value.tasks.map(task=> task.id===id? { ...task, name:name } : { ...task } )
+        value.tasks[id-1].name = name
+        return value
+    })
+}
+
+export function add_todo(id: number, todo: string){
+    let new_todo: Todo = {
+        name:todo,
+        done:false
+    }
+    board.update(value=>{
+        value.tasks[id-1].todos.push(new_todo)
         return value
     })
 }
