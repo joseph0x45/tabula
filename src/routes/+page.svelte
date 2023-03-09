@@ -7,7 +7,7 @@
 	import board, { add_task } from "../store/board";
 
     function toggle_show_modal(){
-        add_task_modal_is_visible.set(true) 
+        add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
     }
 
     function handle_keypress( e: KeyboardEvent ){        

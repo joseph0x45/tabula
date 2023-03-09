@@ -72,6 +72,10 @@ export function remove_task(id:number){
 
 export function clear(){
     add_task_modal_is_visible.set(false)
+    const confirm = window.confirm("Clear all tasks?")
+    if(!confirm){
+        return
+    }
     board.update(value=>{
         value.tasks = []
         return value
