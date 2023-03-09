@@ -41,6 +41,10 @@
     }
 
     let todo_name: string 
+    function _add_todo(){
+        add_todo(latest_task.id, todo_name)
+        todo_name = ""
+    }
 
 </script>
 
@@ -65,7 +69,7 @@
                         </svg>  
                     </button>
                 </div>
-                <form class=" flex flex-col p-1 gap-3" on:submit|preventDefault={()=>{ add_todo(latest_task.id, todo_name) }} >
+                <form class=" flex flex-col p-1 gap-3" on:submit|preventDefault={_add_todo} >
                     <input bind:value={latest_task.name} on:change={()=>{ update_task_name(latest_task.id, latest_task.name) }} class=" w-full dark:text-white  dark:caret-white rounded-md p-2 focus:outline-none text-gray-800 dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Task title"  >
                     <div class=" flex justify-between items-center w-full " >
                         <input bind:value={todo_name} required class=" w-[80%] focus:outline-none rounded-md p-2 text-gray-800 dark:text-white dark:caret-white dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Add Todo">
