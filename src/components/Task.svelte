@@ -25,7 +25,7 @@
 
 <svelte:window on:mouseup={stop} on:mousemove={drag} />
 
-<main style={`background-color:${task.color.primary}; left: ${task.posx}px; top: ${task.posy}px; `} class={` select-none text-white w-52 h-min rounded-xl shadow-black shadow-2xl dark:shadow-gray-500 p-2 absolute `} >
+<main style={`background-color:${task.color.primary}; left: ${task.posx}px; top: ${task.posy}px; `} class={` select-none text-white w-62 h-min rounded-xl shadow-black shadow-2xl dark:shadow-gray-500 p-2 absolute `} >
     <section 
         class={` h-[15%] focus: w-full flex items-center justify-between mb-1 ${moving?"hover:cursor-grabbing":"hover:cursor-grab"}  `} 
         on:mousedown={start}
@@ -44,7 +44,7 @@
             </button>
         </div>
     </section>
-    <section class="no-scroll-bar  flex flex-col gap-1 h-[80%] w-full overflow-hidden overflow-y-scroll " >
+    <section class="no-scroll-bar  flex flex-col gap-1 h-[95%] w-full overflow-hidden overflow-y-scroll " >
         {#each task.todos as todo}
             <Todo name={todo.name} done={todo.done} parent_color={task.color.secondary} />
         {/each}

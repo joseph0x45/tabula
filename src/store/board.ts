@@ -57,7 +57,6 @@ export function update_task_position( id:number, posx:number, posy:number ){
 }
 
 export function update_task_name( id:number, name:string ){
-    console.log(id)
     board.update(value=>{
         // value.tasks.map(task=> task.id===id? { ...task, name:name } : { ...task } )
         value.tasks[id-1].name = name
@@ -66,11 +65,12 @@ export function update_task_name( id:number, name:string ){
 }
 
 export function add_todo(id: number, todo: string){
-    let new_todo: Todo = {
-        name:todo,
-        done:false
-    }
     board.update(value=>{
+        let new_todo: Todo = {
+            name:todo,
+            done:false,
+            id:value.tasks[id-1].todos.length+1
+        }
         value.tasks[id-1].todos.push(new_todo)
         return value
     })
