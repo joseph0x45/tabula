@@ -44,6 +44,15 @@ export function add_task(){
     })
 }
 
+export function update_task_position( id:number, posx:number, posy:number ){
+    board.update(
+        value=>{
+            value.tasks = value.tasks.map(task=> task.id===id? { ...task, posx, posy } : { ...task } )
+            return value
+        }
+    )
+}
+
 export function update_task_name( id:number, name:string ){
     board.update(value=>{
         value.tasks.map(task=> task.id===id? { ...task, name:name } : { ...task } )

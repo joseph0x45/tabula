@@ -1,7 +1,7 @@
 <script lang="ts"  >
     import Todo from "../components/Todo.svelte"
     import type { Task } from "../types";
-    import { remove_task, update_task_name } from "../store/board";
+    import { remove_task, update_task_name, update_task_position } from "../store/board";
     import { idling } from "../store";
     export let task: Task
     let moving = false
@@ -12,6 +12,7 @@
 
     function stop(){
         moving = false
+        update_task_position(task.id, task.posx, task.posy)
     }
 
     function drag(e: MouseEvent){
