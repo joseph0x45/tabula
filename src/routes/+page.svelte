@@ -4,7 +4,7 @@
     import ToolTip from "../components/modals/ToolTip.svelte";
     import Socials from "../components/modals/Socials.svelte";
     import AddTask from "../components/modals/AddTask.svelte";
-    import { add_task_modal_is_visible } from "../store";
+    import { add_task_modal_is_visible, idling } from "../store";
 	import board, { add_task } from "../store/board";
 
     function toggle_show_modal(){
@@ -15,6 +15,9 @@
         switch (e.key) {
             case "t":
                 if($add_task_modal_is_visible){
+                    return
+                }
+                if(!$idling){
                     return
                 }
                 toggle_show_modal()

@@ -2,6 +2,7 @@
     import Todo from "../components/Todo.svelte"
     import type { Task } from "../types";
     import { remove_task, update_task_name } from "../store/board";
+    import { idling } from "../store";
     export let task: Task
     let moving = false
 
@@ -19,7 +20,6 @@
             task.posx += e.movementX
         }
     }
-
 </script>
 
 <svelte:window on:mouseup={stop} on:mousemove={drag} />
@@ -29,7 +29,7 @@
         class={` h-[15%] focus: w-full flex items-center justify-between mb-1 ${moving?"hover:cursor-grabbing":"hover:cursor-grab"}  `} 
         on:mousedown={start}
     >
-        <input title={task.name} bind:value={task.name} on:change={()=>{ update_task_name(task.id, task.name) }} type="text" class={`" w-[70%] bg-transparent focus:outline-none text-white select-none ${moving?"hover:cursor-grabbing":"hover:cursor-grab"} `} />
+        <input title={task.name} on:focusout={()=>{ idling.set(true) }} on:focus={()=>{ idling.set(false) }} bind:value={task.name} on:change={()=>{ update_task_name(task.id, task.name) }} type="text" class={`" w-[70%] bg-transparent focus:outline-none text-white select-none ${moving?"hover:cursor-grabbing":"hover:cursor-grab"} `} />
         <div class=" flex gap-2" >
             <button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
