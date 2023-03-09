@@ -78,7 +78,7 @@ export function add_todo(id: number, todo: string){
 
 export function toggle_todo_done(id: number, todo_id: number){
     board.update(value=>{
-        value.tasks[id-1].todos[todo_id-1].done = !value.tasks[id-1].todos[todo_id].done
+        value.tasks[id-1].todos[todo_id-1].done = !(value.tasks[id-1].todos[todo_id-1].done)
         return value
     })
 }
