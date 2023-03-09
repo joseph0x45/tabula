@@ -4,7 +4,7 @@
     import ToolTip from "../components/modals/ToolTip.svelte";
     import Socials from "../components/modals/Socials.svelte";
     import { add_task_modal_is_visible, idling } from "../store";
-	import board, { add_task, just_created_task_id, update_task_name } from "../store/board";
+	import board, { add_task, clear, just_created_task_id, update_task_name } from "../store/board";
 
     function toggle_show_modal(){
         add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
@@ -22,6 +22,15 @@
                 toggle_show_modal()
                 add_task()
                 break;
+            case "c":
+                if($add_task_modal_is_visible){
+                    return
+                }
+                if(!$idling){
+                    return
+                }
+                clear()
+                break
             case "Escape":
                 if($add_task_modal_is_visible){
                     add_task_modal_is_visible.set(false)
