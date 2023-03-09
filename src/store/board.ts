@@ -35,10 +35,13 @@ export function add_task(){
         const new_task: Task = {
             id : value.tasks.length+1,
             name:"",
-            todos:[] as Todo[],
+            todos:[{
+                name:"Test",
+                done:true
+            }] as Todo[],
             posx:100,
             posy:100,
-            color:colors[4]
+            color:colors[5]
         }
         just_created_task_id.set(new_task.id)
         value.tasks.push(new_task)

@@ -45,7 +45,7 @@
     <Socials/>
     
     {#if $add_task_modal_is_visible}
-        <main  class=" w-72  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md shadow-2xl shadow-black dark:shadow-white flex flex-col items-center justify-center" >
+        <main  class=" w-72  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md shadow-2xl shadow-black dark:shadow-gray-500  flex flex-col items-center justify-center" >
             <div class="  w-full rounded-md p-2 flex flex-col bg-gray-500 dark:bg-black" >
                 <div class=" p-1 select-none text-white flex justify-between" >
                     <h1>New Task</h1>

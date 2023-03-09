@@ -25,5 +25,10 @@ export const colors: Color[] = [
         name:"Cerruland Blue",
         primary:"#2a52be",
         secondary:"#0892d0"
+    },
+    {
+        name:"Blicky Black",
+        primary:"#282C35",
+        secondary:"#36454f"
     }
 ]

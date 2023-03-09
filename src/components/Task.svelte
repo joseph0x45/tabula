@@ -25,7 +25,7 @@
 
 <svelte:window on:mouseup={stop} on:mousemove={drag} />
 
-<main style={`background-color:${task.color.primary}; left: ${task.posx}px; top: ${task.posy}px; `} class={` select-none text-white w-52 h-min rounded-xl dark:shadow-white shadow-2xl dark:shadow-[${task.color.primary}] p-2 absolute `} >
+<main style={`background-color:${task.color.primary}; left: ${task.posx}px; top: ${task.posy}px; `} class={` select-none text-white w-52 h-min rounded-xl shadow-black shadow-2xl dark:shadow-gray-500 p-2 absolute `} >
     <section 
         class={` h-[15%] focus: w-full flex items-center justify-between mb-1 ${moving?"hover:cursor-grabbing":"hover:cursor-grab"}  `} 
         on:mousedown={start}
