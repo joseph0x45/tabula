@@ -44,7 +44,7 @@
 <main class=" p-1 relative h-screen w-full dark:text-slate-300 " >
     <ToolTip/>
     <Socials/>
-    <AddTask/>
+    <AddTask />
     {#if  board}
 
         {#if $board.tasks.length===0 && !$add_task_modal_is_visible}

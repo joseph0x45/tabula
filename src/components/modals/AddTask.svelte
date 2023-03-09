@@ -1,5 +1,7 @@
-<script lang="ts`" >
+<script lang="ts" >
+	import { onMount } from "svelte";
     import { add_task_modal_is_visible } from "../../store";
+    import { just_created_task_id } from "../../store/board";
     // import { colors } from "$lib"
     function toggle_show_modal(){
         add_task_modal_is_visible.set(false) 
@@ -7,6 +9,7 @@
     function add_todo(){
         alert("bozo")
     }
+
 </script>
 
 {#if $add_task_modal_is_visible}

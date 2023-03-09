@@ -28,6 +28,7 @@ board.subscribe((value)=>{
 
 export default board
 
+export const just_created_task_id = writable(0)
 
 export function add_task(){
     board.update((value)=>{
@@ -39,6 +40,7 @@ export function add_task(){
             posy:100,
             color:colors[4]
         }
+        just_created_task_id.set(new_task.id)
         value.tasks.push(new_task)
         return value
     })
