@@ -1,7 +1,7 @@
 <script lang="ts"  >
     import Todo from "../components/Todo.svelte"
     import type { Task } from "../types";
-    import { remove_task } from "../store/board";
+    import { remove_task, update_task_name } from "../store/board";
     export let task: Task
     let moving = false
 
@@ -29,7 +29,7 @@
         class={` h-[15%] focus: w-full flex items-center justify-between mb-1 ${moving?"hover:cursor-grabbing":"hover:cursor-grab"}  `} 
         on:mousedown={start}
     >
-        <h1 title="Name is too long so it shows in here" >Name</h1>
+        <input title={task.name} bind:value={task.name} on:change={()=>{ update_task_name(task.id, task.name) }} type="text" class={`" w-[70%] bg-transparent focus:outline-none text-white select-none ${moving?"hover:cursor-grabbing":"hover:cursor-grab"} `} />
         <div class=" flex gap-2" >
             <button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">

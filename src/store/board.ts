@@ -44,6 +44,13 @@ export function add_task(){
     })
 }
 
+export function update_task_name( id:number, name:string ){
+    board.update(value=>{
+        value.tasks.map(task=> task.id===id? { ...task, name:name } : { ...task } )
+        return value
+    })
+}
+
 export function remove_task(id:number){
     add_task_modal_is_visible.set(false)
     board.update((value)=>{
