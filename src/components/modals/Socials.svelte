@@ -1,4 +1,4 @@
-<main class=" absolute bottom-0 left-0 bg-transparent p-2 " >
+<main class=" fixed bottom-0 left-0 bg-transparent p-2 " >
     
     <div class=" flex justify-start items-center gap-10 w-full  rounded-md " >
         <a href="http://github.com/TheWisePigeon/tabula" target="_blank" rel="noreferrer" >

@@ -7,7 +7,7 @@
     }
 </script>
 
-<main class=" absolute top-0 right-0 bg-transparent p-2 " >
+<main class=" fixed top-0 right-0 bg-transparent p-2 " >
     
     <div class="flex justify-between items-center w-min gap-5 h-min" >
        
