@@ -1,6 +1,7 @@
 import { writable } from "svelte/store"
 import type { Board, Task, Todo } from "../types"
 import { colors } from "$lib"
+import { add_task_modal_is_visible } from "."
 
 const new_board: Board = {
     id:1,
@@ -44,6 +45,7 @@ export function add_task(){
 }
 
 export function remove_task(id:number){
+    add_task_modal_is_visible.set(false)
     board.update((value)=>{
         value.tasks = value.tasks.filter(task=>task.id!==id)
         return value
@@ -51,6 +53,7 @@ export function remove_task(id:number){
 }
 
 export function clear(){
+    add_task_modal_is_visible.set(false)
     board.update(value=>{
         value.tasks = []
         return value
