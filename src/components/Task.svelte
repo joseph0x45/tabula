@@ -46,7 +46,7 @@
     </section>
     <section class="no-scroll-bar  flex flex-col gap-1 h-[95%] w-full overflow-hidden overflow-y-scroll " >
         {#each task.todos as todo}
-            <Todo name={todo.name} done={todo.done} parent_color={task.color.secondary} />
+            <Todo {todo} parent_id={task.id} parent_color={task.color.secondary} />
         {/each}
     </section>
 </main>

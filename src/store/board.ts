@@ -76,6 +76,27 @@ export function add_todo(id: number, todo: string){
     })
 }
 
+export function toggle_todo_done(id: number, todo_id: number){
+    board.update(value=>{
+        value.tasks[id-1].todos[todo_id-1].done = !value.tasks[id-1].todos[todo_id].done
+        return value
+    })
+}
+
+export function update_todo_name( id: number, todo_id: number, todo_name: string ){
+    board.update(value=>{
+        value.tasks[id-1].todos[todo_id-1].name= todo_name
+        return value
+    })
+}
+
+export function remove_todo( id: number, todo_id: number ){
+    board.update(value=>{
+        value.tasks[id-1].todos = value.tasks[id-1].todos.filter(todo=>todo.id!==todo_id)
+        return value
+    })
+}
+
 export function remove_task(id:number){
     add_task_modal_is_visible.set(false)
     board.update((value)=>{
