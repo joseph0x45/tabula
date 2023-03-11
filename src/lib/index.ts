@@ -12,7 +12,7 @@ export const colors: Color[] = [
         secondary:"#ffd700"
     },
     {
-        name:"Pinky ",
+        name:"Pinky",
         primary:"#ff77ff",
         secondary:"#ff69b4"
     },
