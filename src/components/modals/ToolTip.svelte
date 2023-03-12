@@ -1,8 +1,9 @@
 <script lang="ts" >
     import { add_task_modal_is_visible } from "../../store";
-    import { clear } from "../../store/board";
+    import { clear, add_task } from "../../store/board";
 
     function toggle_show_modal(){
+        add_task()
         add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
     }
 </script>

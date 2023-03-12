@@ -4,12 +4,17 @@
     import ToolTip from "../components/modals/ToolTip.svelte";
     import Socials from "../components/modals/Socials.svelte";
     import { add_task_modal_is_visible, idling } from "../store";
-	import board, { add_task, clear, update_task_name, add_todo } from "../store/board";
+  	import board, { add_task, clear, update_task_name, add_todo, just_created_task_id } from "../store/board";
 
+    $: latest_task = $board.tasks[$just_created_task_id-1]   
+        
+    function create_task(){
+        add_task()
+        toggle_show_modal()        
+    }
     function toggle_show_modal(){
         add_task_modal_is_visible.set(!$add_task_modal_is_visible) 
     }
-    $: latest_task = $board.tasks[$board.tasks.length-1]
     function handle_keypress( e: KeyboardEvent ){        
         switch (e.key) {
             case "t":
@@ -19,8 +24,7 @@
                 if(!$idling){
                     return
                 }
-                toggle_show_modal()
-                add_task()
+                create_task()
                 break;
             case "c":
                 if($add_task_modal_is_visible){
@@ -63,12 +67,13 @@
             <div class="  w-full rounded-md p-2 flex flex-col bg-gray-500 dark:bg-black" >
                 <div class=" p-1 select-none text-white flex justify-between" >
                     <h1>New Task</h1>
-                    <button on:click={toggle_show_modal} class=" text-white " >
+                    <button on:click={toggle_show_modal}  class=" text-white " >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
                         </svg>  
                     </button>
                 </div>
+                                
                 <form class=" flex flex-col p-1 gap-3" on:submit|preventDefault={_add_todo} >
                     <input bind:value={latest_task.name} on:change={()=>{ update_task_name(latest_task.id, latest_task.name) }} class=" w-full dark:text-white  dark:caret-white rounded-md p-2 focus:outline-none text-gray-800 dark:bg-transparent dark:border dark:border-gray-200 caret-gray-800" type="text" placeholder="Task title"  >
                     <div class=" flex justify-between items-center w-full " >
@@ -100,7 +105,7 @@
                 <div class=" flex flex-col w-[70%] gap-2 text-sm font-thin mt-5" >
                     <button 
                         class="welcome_screen_button" 
-                        on:click={toggle_show_modal}
+                        on:click={create_task}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
