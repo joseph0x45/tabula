@@ -2,18 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.no-scroll-bar::-webkit-scrollbar{
-    display: none;
+.no-scroll-bar::-webkit-scrollbar {
+  display: none;
 }
 
-body{
-    @apply bg-white dark:bg-slate-900;
+body {
+  @apply bg-white rounded-md bg-slate-900 overflow-hidden;
 }
 
-body::-webkit-scrollbar{
-    display: none;
+body::-webkit-scrollbar {
+  display: none;
 }
-
-.welcome_screen_button{
-    @apply  dark:hover:text-white flex items-center gap-2 text-start w-full p-2 hover:bg-gray-200 hover:text-gray-700 rounded-md dark:hover:bg-gray-500;
+.welcome_screen_button {
+  @apply dark:hover:text-white flex items-center gap-2 text-start w-full p-2 hover:bg-gray-200 hover:text-gray-700 rounded-md dark:hover:bg-gray-500;
 }
