@@ -7,12 +7,21 @@
 }
 
 body {
-  @apply bg-white rounded-md bg-slate-900 overflow-hidden;
+  @apply bg-white rounded-md dark:bg-slate-900  h-[2000px];
 }
 
 body::-webkit-scrollbar {
-  display: none;
+  @apply bg-transparent w-2;
 }
+
+body::-webkit-scrollbar-thumb{
+  @apply bg-white rounded-md;
+}
+
+body::-webkit-scrollbar-thumb:horizontal{
+  @apply bg-white rounded-md;
+}
+
 .welcome_screen_button {
   @apply dark:hover:text-white flex items-center gap-2 text-start w-full p-2 hover:bg-gray-200 hover:text-gray-700 rounded-md dark:hover:bg-gray-500;
 }
