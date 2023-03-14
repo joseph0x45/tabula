@@ -9,7 +9,7 @@ Tabula means "board" in latin. And the Prima in front of it means "first". So Ta
 ## How to use
 Tabula is very easy to use. I will add more features in the v2. Watch this video and feel free to join the discord and ask any questions.
 
----video---
+![Recording 2023-03-14 at 23 02 35](https://user-images.githubusercontent.com/95161388/225161352-b6e6f66a-2d7b-4a6d-8612-d153dc0a587e.gif)
 
 
 ## Tips and shortcuts
