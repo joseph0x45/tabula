@@ -30,7 +30,7 @@ func (p *PageView) Render() vecty.ComponentOrHTML {
 			vecty.Style("padding", "10px"),
 		),
 		elem.Div(
-			vecty.Text("Manage your tasks with ease using Tabula (?)"),
+			vecty.Text("Manage your tasks with ease using Tabula"),
 		),
 		elem.UnorderedList(
 			tasks,
