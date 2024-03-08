@@ -29,7 +29,9 @@ func (p *PageView) Render() vecty.ComponentOrHTML {
 		vecty.Markup(
 			vecty.Style("padding", "10px"),
 		),
-		vecty.Text("Manage your tasks with ease using Tabula"),
+		elem.Div(
+			vecty.Text("Manage your tasks with ease using Tabula (?)"),
+		),
 		elem.UnorderedList(
 			tasks,
 		),

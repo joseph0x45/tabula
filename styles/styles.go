@@ -15,3 +15,8 @@ var TaskStyle vecty.MarkupList = vecty.Markup(
 	vecty.Attribute("draggable", true),
 	vecty.Style("cursor", "grab"),
 )
+
+var FlexDiv vecty.MarkupList = vecty.Markup(
+	vecty.Style("display", "flex"),
+	vecty.Style("flex-direction", ""),
+)
